@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const favicon = require('serve-favicon')
+const logger = require("morgan");
 const fs = require("fs");
 const PORT = process.env.PORT || 5000;
 const dotenv = require('dotenv');
@@ -8,6 +9,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
+
+app.use(logger("dev"));
 
 app.use(favicon(path.join(__dirname, './build', 'favicon.ico')))
 

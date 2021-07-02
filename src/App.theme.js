@@ -22,6 +22,10 @@ const AppTheme = (props) => {
         currentThemeJson = require("./themes/default.json");
         break;
 
+      case Themes.dark:
+        currentThemeJson = require("./themes/dark.json");
+        break;
+
       default:
         currentThemeJson = require("./themes/default.json");
         break;
