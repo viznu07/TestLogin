@@ -1,11 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2020-12-01
- * @desc Collection of all validation function
- */
-
 //Function to validate email
 export let ValidateEmail = (email) => {
   let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

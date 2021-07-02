@@ -1,11 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2021-02-03
- * @desc withNavBars HOC will give you the Navbars (Top/Bottom Navbars)
- */
-
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import {
@@ -15,11 +7,12 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    height: "100%"
   },
   content: {
     width: '100%',
-    height: 'calc(100vh - 64px)',
+    height: 'calc(100% - 64px)',
     overflow: "auto",
     [theme.breakpoints.up("sm")]: {
       paddingLeft: 56

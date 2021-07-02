@@ -1,15 +1,7 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2020-12-01
- * @desc Providing the DrawerContext from /src/context which is used in /src/App.js
- */
-
 import React from "react";
 import { DrawerContext } from "./contexts";
 import { Drawer, withStyles, Avatar } from "@material-ui/core";
-import { drawerProps } from "./utils";
+import { DrawerProps } from "./utils";
 
 const styles = (theme) => ({
     root: {
@@ -73,10 +65,10 @@ class AppDrawer extends React.Component {
         super(props);
         this.state = {
             open: false,
-            direction: drawerProps.direction.right,
-            variant: drawerProps.variant.temporary,
-            isLarge:null,
-            component: <>Hai</>
+            direction: DrawerProps.direction.right,
+            variant: DrawerProps.variant.temporary,
+            isLarge: null,
+            component: <></>
         };
     }
 
@@ -84,14 +76,13 @@ class AppDrawer extends React.Component {
         this.setState({
             ...this.state,
             open: false,
-            isLarge:null,
-            component:<></>
+            isLarge: null,
+            component: <></>
         });
         this.props.onClose_ && this.props.onClose_()
     };
 
     set = (props) => {
-        
         this.setState({ ...props });
     };
 
@@ -120,8 +111,8 @@ class AppDrawer extends React.Component {
                         keepMounted: true
                     }}
                 >
-                    <Avatar src="/images/close.svg" className={`${classes.large} ${isLarge? classes.large_extra_large : ""}`} onClick={() => this.close()} />
-                    <div className={`${classes.root} ${isLarge? classes.root_extra_large : ""}`}>{component}</div>
+                    <Avatar src="/images/close.svg" className={`${classes.large} ${isLarge ? classes.large_extra_large : ""}`} onClick={() => this.close()} />
+                    <div className={`${classes.root} ${isLarge ? classes.root_extra_large : ""}`}>{component}</div>
                 </Drawer>
             </DrawerContext.Provider>
         );

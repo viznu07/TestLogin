@@ -1,11 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2021-01-25
- * @modify date 2021-01-29
- * @desc Side Nav bar
- */
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -13,9 +5,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import {
-    NavBarArr
-} from '../../../utils'
 import { matchPath, useHistory } from 'react-router-dom';
 
 const drawerWidth = 56;
@@ -62,7 +51,7 @@ export const SideNavBar = (props) => {
             >
                 <div className={classes.drawerContainer}>
                     <List>
-                        {NavBarArr.map((navBar, index) => (
+                        {[].map((navBar, index) => (
                             <ListItem onClick={(e) => onListClick(navBar)}
                                 button
                                 key={index}

@@ -1,66 +1,51 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27 
- * @modify date 2020-12-01
- * @desc GraphQL client setup
- */
-import { WebSocketLink } from "apollo-link-ws";
-import { getMainDefinition } from "apollo-utilities";
-import {
-  HttpLink,
-  InMemoryCache,
-  ApolloClient,
-  split,
-  ApolloLink,
-} from "apollo-boost";
-import { localStorageKeys } from "../utils";
-import config from "../config";
+import { ApolloClient, split, createHttpLink, InMemoryCache, } from '@apollo/client';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { WebSocketLink } from '@apollo/client/link/ws';
+import { config } from '../config';
+import { LocalStorageKeys } from '../utils';
+import { setContext } from '@apollo/client/link/context';
 
-const httpLink = new HttpLink({ uri: config.graphql });
-
-const middlewareLink = new ApolloLink((operation, forward) => {
-  // get the authentication token from local storage if it exists
-  const tokenValue = localStorage.getItem(localStorageKeys.auth_token);
-  // return the headers to the context so httpLink can read them
-  operation.setContext({
-    headers: {
-      Authorization: tokenValue ? `Bearer ${tokenValue}` : "",
-    },
-  });
-  return forward(operation);
+const httpLink = createHttpLink({
+  uri: config.api_url,
 });
 
-// authenticated httplink
-const httpLinkAuth = middlewareLink.concat(httpLink);
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem(LocalStorageKeys.authToken);
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
 
 const wsLink = new WebSocketLink({
-  uri: config.socket,
+  uri: config.graphql_web_socket_url,
   options: {
     reconnect: true,
     connectionParams: {
-      Authorization: `Bearer ${localStorage.getItem(
-        localStorageKeys.auth_token
-      )}`,
+      authToken: localStorage.getItem(LocalStorageKeys.authToken),
     },
-  },
+  }
 });
 
-const link = split(
-  // split based on operation type
+const splitLink = split(
   ({ query }) => {
-    const { kind, operation } = getMainDefinition(query);
-    return kind === "OperationDefinition" && operation === "subscription";
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === 'OperationDefinition' &&
+      definition.operation === 'subscription'
+    );
   },
   wsLink,
-  httpLinkAuth
+  authLink.concat(httpLink)
 );
 
-// apollo client setup
-const ApolloGQLClient = new ApolloClient({
-  link: ApolloLink.from([link]),
-  cache: new InMemoryCache(),
-  connectToDevTools: true,
+const client = new ApolloClient({
+  link: splitLink,
+  cache: new InMemoryCache()
 });
 
-export default ApolloGQLClient;
+export { client };

@@ -11,26 +11,26 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const Home = props => {
+export const Login = props => {
 
     const history = useHistory();
     const classes = useStyles();
 
-    const onLogOut = () => {
-        localStorage.removeItem(LocalStorageKeys.authToken);
+    const onLogin = () => {
+        localStorage.setItem(LocalStorageKeys.authToken, "authtoken");
         history.push(Routes.home);
     }
 
     return <div className={classes.root}>
         <Typography variant="body1">
-            Your are logged in!!!
+            Your are not logged in!!!
         </Typography>
         <Button
             variant={"contained"}
             color={"primary"}
-            onClick={onLogOut}
+            onClick={onLogin}
         >
-            Logout
+            LogIn
         </Button>
     </div>
 }

@@ -1,17 +1,4 @@
 /**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2021-01-09
- * @modify date 2021-02-03
- * @desc Collection of constants
- */
-import React from 'react';
-import { Routes } from '../router/routes';
-// import ListAltIcon from '@material-ui/icons/ListAlt';
-import ViewStreamIcon from '@material-ui/icons/ViewStream';
-
-
-/**
  * Object with role as key and value, which is used for 
  * comparison of role in different place.
  */
@@ -96,12 +83,3 @@ export let NetWorkCallMethods = {
     delete: "DELETE",
     update: "UPDATE",
 };
-
-
-export const NavBarArr = [
-    {
-        name: "Forms",
-        link: Routes.forms,
-        icon: <ViewStreamIcon />
-    }
-]

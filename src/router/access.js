@@ -1,11 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2020-12-01
- * @desc All access related function for different roles.
- */
-
 import { Routes } from "./routes"
 import { UserRoles } from "../utils"
 
@@ -25,7 +17,7 @@ export const Redirections = (userRole) => {
 export const LoginSuccess = (userRole) => {
     switch (userRole) {
         default:
-            return '';
+            return '/';
     }
 }
 

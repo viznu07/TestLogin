@@ -1,23 +1,26 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2021-01-29
- * @desc Providing the AuthContext from /src/context which is used in the /src/App.js.
- */
-
 import React from "react";
 import { LinearProgress } from "@material-ui/core";
 import { NetworkCall } from "./networkcall";
-import { LocalStorageKeys, NetWorkCallMethods } from "./utils";
+import { LocalStorageKeys, NetWorkCallMethods, refreshCacheAndReload, semverGreaterThan } from "./utils";
 
 class AppAuth extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loading: false
+    };
   }
 
   componentDidMount() {
+    this.checkForLatestBuild();
+    this.refreshAPI();
+  }
+
+  refreshAPI = () => {
+
+  }
+
+  checkForLatestBuild = () => {
     NetworkCall(
       `${window.location.protocol}//${window.location.hostname}${window.location.port ? ":" + window.location.port : ''}/meta.json`,
       NetWorkCallMethods.get,
@@ -25,7 +28,11 @@ class AppAuth extends React.Component {
       null,
       false,
       true).then((_) => {
+        const isVersion = semverGreaterThan(_.data.version, localStorage.getItem(LocalStorageKeys.version));
         localStorage.setItem(LocalStorageKeys.version, _.data.version)
+        if (isVersion) {
+          refreshCacheAndReload();
+        }
       }).catch(err => {
         console.log('err:', err);
       })
@@ -35,14 +42,14 @@ class AppAuth extends React.Component {
 
     let {
       loading
-    } = this.props;
+    } = this.state;
 
     return (
       <>
-        {loading && (
+        {loading ?
           <LinearProgress />
-        )}
-        {this.props.children}
+          : this.props.children
+        }
       </>
     );
   }

@@ -1,12 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2020-12-01
- * @desc If any error/crash happend in the app, those are cached here and 500 page is shown, if 
- * need the error will be send to server.
- */
-
 import React from "react";
 import { Grid, Typography, Link, withStyles } from "@material-ui/core";
 
@@ -53,7 +44,7 @@ class AppErrorBoundary extends React.Component {
             </Typography>
 
             <Typography id="error_catcher_typo2" variant="h2">
-              Opps!!! Something went wrong!
+            Oops! Something went wrong.
             </Typography>
 
             <Link id="error_catcher_link" href="/">

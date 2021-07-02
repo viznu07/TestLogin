@@ -1,12 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2021-01-25
- * @desc withAllContexts HOC will send all the necessary Context such as AlertContext,
- * DialogContext, BackdropContext and DrawerContext as a prop.
- */
-
 import React from "react";
 import { AlertContext, DialogContext, BackdropContext, DrawerContext } from "../contexts";
 

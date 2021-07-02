@@ -1,11 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-11-27
- * @modify date 2021-01-29
- * @desc Providing the DialogContext from /src/context which is used in /src/App.js
- */
-
 import React from "react";
 import { DialogContext } from "./contexts";
 import Dialog from "@material-ui/core/Dialog";
@@ -17,8 +9,26 @@ import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
 
 
-const styles= (theme) =>({
-dialog:{minWidth:600}
+const styles = (theme) => ({
+  dialog: {
+    '& .MuiDialogActions-root': {
+      [theme.breakpoints.down('xs')]: {
+        flexDirection: 'column',
+        '& .MuiButtonBase-root': {
+          width: '80%',
+          '&:not(:first-child)': {
+            marginTop: '10px'
+          }
+        },
+      },
+    }
+  },
+  title: {
+    textAlign: 'center'
+  },
+  dialogActions: {
+    padding: '0px 24px 16px 24px'
+  }
 })
 
 
@@ -31,7 +41,7 @@ class AppDialog extends React.Component {
       body: "",
       positiveBtn: "Ok",
       negativeBtn: "Cancel",
-      negativeBtnDontShow:false,
+      negativeBtnDontShow: false,
       onOk: () => null,
       onCancel: this.close,
     };
@@ -40,13 +50,6 @@ class AppDialog extends React.Component {
   close = () => {
     this.setState({
       open: false,
-      
-      // THIS PART IS COMMENTED ON A CAUSE
-      
-      // title: "",
-      // body: "",
-      // positiveBtn: "Ok",
-      // negativeBtn: "Cancel",
     });
   };
 
@@ -55,7 +58,7 @@ class AppDialog extends React.Component {
   };
 
   render() {
-    const {classes} = this.props
+    const { classes } = this.props
     return (
       <DialogContext.Provider
         value={{
@@ -71,22 +74,24 @@ class AppDialog extends React.Component {
           aria-describedby="alert-dialog-description"
           classes={
             {
-              paper:classes.dialog
+              paper: classes.dialog
             }
           }
         >
-          <DialogTitle id="alert-dialog-title">{this.state.title}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              {this.state.body}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
+          <DialogTitle id="alert-dialog-title" className={classes.title}>{this.state.title}</DialogTitle>
+          {this.state.body &&
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {this.state.body}
+              </DialogContentText>
+            </DialogContent>
+          }
+          <DialogActions className={classes.dialogActions}>
             {!Boolean(this.state?.negativeBtnDontShow) &&
-              <Button onClick={this.state.onCancel} color="primary">
-              {this.state.negativeBtn}
-            </Button>}
-            <Button onClick={this.state.onOk} color="primary" autoFocus>
+              <Button onClick={this.state.onCancel} color="primary" variant="outlined">
+                {this.state.negativeBtn}
+              </Button>}
+            <Button onClick={this.state.onOk} color="primary" variant="contained">
               {this.state.positiveBtn}
             </Button>
           </DialogActions>

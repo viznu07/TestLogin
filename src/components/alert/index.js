@@ -1,10 +1,3 @@
-/**
- * @author Kameshwaran Murugan
- * @email kamesh@qdmplatforms.com
- * @create date 2020-12-01
- * @modify date 2021-02-03
- * @desc Material UI MuIAlert and Snackbar is used to show the temporary message Component
- */
 import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
