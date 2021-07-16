@@ -62,7 +62,7 @@ This boilerplate uses Axios for make any networkcall from the react app. To do s
 ### [Express v4.17.1](https://expressjs.com/en/4x/api.html)
 This boilerplate also supports serving the Create React App with a express server which is very usefull to set the Dynamic Title, Description and other Meta's for a route in CSR (Client Side Rendering) itself.  To do so it uses of packages such as Morgon, Nodemon, Server Favicon and Babel for bundling please have a look at the devDependencies of the `package.json`
 
-## Props of the Boilerplate
+## Pros of the Boilerplate
 
 1. It is bootstrapped with `Create React App (Recommended by ReactJS team)`.
 
