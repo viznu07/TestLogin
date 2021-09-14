@@ -115,18 +115,21 @@ export let semverGreaterThan = (versionA, versionB) => {
 };
 
 // Refresh the cache by clearing the cache and reload
-export const refreshCacheAndReload = () => {
-    if (caches) {
-        // Service worker cache should be cleared with caches.delete()
-        caches.keys().then((names) => {
-            for (const name of names) {
-                caches.delete(name);
-            }
-        });
+export const refreshCacheAndReload = async () => {
+  if (caches) {
+    // Service worker cache should be cleared with caches.delete()
+    const names = await caches.keys()
+    const promArr = [];
+    for (const name of names) {
+      promArr.push(caches.delete(name));
     }
-    // delete browser cache and hard reload
-    window.location.reload(true);
+    await Promise.all(promArr);
+  }
+  // Delete browser cache and hard reload
+  window.location.reload(true);
 };
+
+
 
 // To get distance between two lattitude and longitude
 export const distance = (lat1, lon1, lat2, lon2, unit) => {
