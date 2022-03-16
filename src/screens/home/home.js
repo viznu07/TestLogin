@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography, makeStyles } from '@material-ui/core';
+import { Button, makeStyles } from '@material-ui/core';
 import { LocalStorageKeys } from '../../utils';
 import { useHistory } from 'react-router-dom';
 import { Routes } from '../../router/routes';
@@ -17,20 +17,38 @@ export const Home = props => {
     const classes = useStyles();
 
     const onLogOut = () => {
-        localStorage.removeItem(LocalStorageKeys.authToken);
-        history.push(Routes.home);
+        history.push(Routes.login);
+    }
+    
+    const onLogOut2 = () => {
+        history.push(Routes.login2);
+    }
+
+    const onLogOut3 = () => {
+        history.push(Routes.login3);
     }
 
     return <div className={classes.root}>
-        <Typography variant="body1">
-            Your are logged in!!!
-        </Typography>
         <Button
             variant={"contained"}
             color={"primary"}
             onClick={onLogOut}
         >
-            Logout
+            Login Screen 1
+        </Button>
+        <Button
+            variant={"contained"}
+            color={"primary"}
+            onClick={onLogOut2}
+        >
+            Login Screen 2
+        </Button>
+        <Button
+            variant={"contained"}
+            color={"primary"}
+            onClick={onLogOut3}
+        >
+            Login Screen 3
         </Button>
     </div>
 }

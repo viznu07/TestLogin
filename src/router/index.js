@@ -11,7 +11,9 @@ import PrivateRouter from "./privateRouter";
 import {
   NotFound,
   Home,
-  Login
+  Login,
+  Login2,
+  Login3
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -25,10 +27,20 @@ const RouterApp = (props) => {
           <Login />
         </Route>
 
+        {/* Login2 Route */}
+        <Route exact path={Routes.login2}>
+          <Login2 />
+        </Route>
+
+        {/* Login3 Route */}
+        <Route exact path={Routes.login3}>
+          <Login3 />
+        </Route>
+
         {/* Home Route */}
-        <PrivateRouter exact path={Routes.home}>
+        <Route exact path={Routes.home}>
           <Home />
-        </PrivateRouter>
+        </Route>
 
         {/* For unknow/non-defined path */}
         <Route exact path="*" component={NotFound} />

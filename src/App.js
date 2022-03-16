@@ -9,6 +9,11 @@ import AppDrawer from "./App.drawer";
 import { CssBaseline } from "@material-ui/core";
 import AppDialog from "./App.dialog";
 import AppBackdrop from "./App.backdrop";
+import { ThemeProvider } from "@mui/styles";
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 const App = () => {
   return (
@@ -21,7 +26,9 @@ const App = () => {
               <AppDialog>
                 <AppDrawer>
                   <AppBackdrop>
+                  <ThemeProvider theme={theme}>
                     <RouterApp />
+                    </ThemeProvider>
                   </AppBackdrop>
                 </AppDrawer>
               </AppDialog>
