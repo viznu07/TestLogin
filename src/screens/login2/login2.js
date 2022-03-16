@@ -122,11 +122,11 @@ export const Login2 = (props) => {
 
   return (
     <div className={classes.mainroot}>
-      <Grid container xs={3} sm={5} md={6} lg={7} className={classes.image}></Grid>
+      <Grid container xs={4} sm={6} md={6} lg={7} className={classes.image}></Grid>
       <Grid
         container
-        xs={10}
-        sm={8}
+        xs={9}
+        sm={7}
         md={6}
         spacing={0.99}
         lg={5}

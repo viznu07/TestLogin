@@ -13,7 +13,8 @@ import {
   Home,
   Login,
   Login2,
-  Login3
+  Login3,
+  Login4
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -35,6 +36,11 @@ const RouterApp = (props) => {
         {/* Login3 Route */}
         <Route exact path={Routes.login3}>
           <Login3 />
+        </Route>
+
+         {/* Login4 Route */}
+         <Route exact path={Routes.login4}>
+          <Login4 />
         </Route>
 
         {/* Home Route */}

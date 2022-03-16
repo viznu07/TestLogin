@@ -28,6 +28,10 @@ export const Home = props => {
         history.push(Routes.login3);
     }
 
+    const onLogOut4 = () => {
+        history.push(Routes.login4);
+    }
+
     return <div className={classes.root}>
         <Button
             variant={"contained"}
@@ -49,6 +53,13 @@ export const Home = props => {
             onClick={onLogOut3}
         >
             Login Screen 3
+        </Button>
+        <Button
+            variant={"contained"}
+            color={"primary"}
+            onClick={onLogOut4}
+        >
+            Login Screen 4
         </Button>
     </div>
 }

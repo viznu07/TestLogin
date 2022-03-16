@@ -12,18 +12,17 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     backgroundColor: "#fff",
-    borderRadius: "12px",
     boxShadow: "0px 8px 69px #0000001A",
     display: "flex",
     alignItems: "center",
     width: "800px",
-    height: "420px",
+    height: "100%",
     [theme.breakpoints.down("sm")]: {
       margin: "10px",
     },
     [theme.breakpoints.down("md")]: {
-      margin: "10px",
-    },
+        margin: "15px",
+      },
   },
   side: {
     backgroundImage: `url("https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bG9naW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")`,
@@ -31,8 +30,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     width: "100%",
     height: "100%",
-    borderTopLeftRadius: "12px",
-    borderBottomLeftRadius: "12px",
   },
   next: {
     width: "100%",
@@ -67,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Login3 = (props) => {
+export const Login4 = (props) => {
   const classes = useStyles();
   const history = useHistory();
   const [values, setValues] = useState({
@@ -146,7 +143,7 @@ export const Login3 = (props) => {
           xs={3}
           sm={5}
           md={6}
-          lg={7}
+          lg={6}
           className={classes.side}
         ></Grid>
         <Grid
@@ -154,23 +151,22 @@ export const Login3 = (props) => {
           xs={10}
           sm={8}
           md={6}
+          lg={6}
           spacing={2}
-          lg={5}
           className={classes.next}
           sx={{ flexDirection: "column" }}
         >
           <Grid item>
-            <Avatar sx={{ width: 56, height: 56 }} />
+            <Avatar sx={{ width: 66, height: 66 }} />
           </Grid>
           <Grid item>
             <Typography variant="h4">Login</Typography>
           </Grid>
-          <Grid item style={{ width: "75%" }}>
+          <Grid item style={{ width: "85%" }}>
             <div className={classes.item}>
               <label>Email ID</label>
               <TextField
                 value={values.email_id}
-                variant="standard"
                 onChange={(e) => handleChange("email", e.target.value)}
                 style={{ height: "20%" }}
               />
@@ -181,11 +177,10 @@ export const Login3 = (props) => {
               )}
             </div>
           </Grid>
-          <Grid item style={{ width: "75%" }}>
+          <Grid item style={{ width: "85%" }}>
             <div className={classes.item}>
               <label>Password</label>
               <TextField
-                variant="standard"
                 type={values.showPassword ? "text" : "password"}
                 value={values.password}
                 onChange={(e) => handleChange("password", e.target.value)}
@@ -213,7 +208,7 @@ export const Login3 = (props) => {
               <Typography variant="subtitle2">Forget your password?</Typography>
             </span>
           </Grid>
-          <Grid item style={{ width: "75%" }}>
+          <Grid item style={{ width: "85%" }}>
             <div className={classes.item}>
               <Button
                 variant="contained"
