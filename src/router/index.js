@@ -14,7 +14,8 @@ import {
   Login,
   Login2,
   Login3,
-  Login4
+  Login4,
+  Login5
 } from './../screens';
 
 const RouterApp = (props) => {
@@ -41,6 +42,11 @@ const RouterApp = (props) => {
          {/* Login4 Route */}
          <Route exact path={Routes.login4}>
           <Login4 />
+        </Route>
+
+          {/* Login5 Route */}
+        <Route exact path={Routes.login5}>
+          <Login5 />
         </Route>
 
         {/* Home Route */}
