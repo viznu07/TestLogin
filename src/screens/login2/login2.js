@@ -195,7 +195,7 @@ export const Login2 = (props) => {
               size="large"
               onClick={onSendLoginBtnClicked}
             >
-              Log In
+              LogIn
             </Button>
           </div>
         </Grid>
