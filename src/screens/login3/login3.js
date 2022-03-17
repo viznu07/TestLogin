@@ -6,10 +6,6 @@ import { useHistory } from "react-router-dom";
 import { Routes } from "../../router/routes";
 
 const useStyles = makeStyles((theme) => ({
-  log: {
-    display: "flex",
-    justifyContent: "center",
-  },
   container: {
     backgroundColor: "#fff",
     borderRadius: "12px",

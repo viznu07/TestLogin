@@ -11,10 +11,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     overflowX: "hidden",
   },
-  log: {
-    display: "flex",
-    justifyContent: "center",
-  },
   container: {
     backgroundColor: "#fff",
     display: "flex",
