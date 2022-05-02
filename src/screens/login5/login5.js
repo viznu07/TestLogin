@@ -150,7 +150,7 @@ export const Login5 = (props) => {
             <div className={classes.item}>
               <label>Email ID</label>
               <TextField
-                value={values.email_id}
+                value={values.email}
                 onChange={(e) => handleChange("email", e.target.value)}
                 style={{ height: "20%" }}
               />
